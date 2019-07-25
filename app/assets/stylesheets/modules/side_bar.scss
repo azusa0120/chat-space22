@@ -32,13 +32,26 @@
     .group {
       box-sizing: border-box;
       padding: 20px 0 40px;
-      &__name {
-        font-size: $side_group_name;
-      }
-      &__message {
-        font-size: $side_group_message;
-        margin-top: 5px;
-      }
+      a{
+          
+        }
+        &__name {
+          font-size: $side_group_name;
+        }
+        &__message {
+          font-size: $side_group_message;
+          margin-top: 5px;
+        }
     }
   }
+}
+
+.group__name{
+  color: white;
+  text-decoration: none;
+}
+
+.group__message{
+  color: white;
+  text-decoration: none;
 }
