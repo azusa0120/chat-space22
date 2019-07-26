@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function(){ 
-  console.log('aaaaa');
   function buildMessage(message){
     var insertImage = message.image ? `<img src="${message.image}">` : ''
     var html = `<div class="message"data-id="${message.id}">
@@ -36,7 +35,6 @@ $(document).on('turbolinks:load', function(){
 
 
   .done(function(message){
-    console.log(message)
     var html = buildMessage(message);
     $('.messages').append(html)
     $('.messages').animate({scrollTop: $(".messages")[0].scrollHeight},500);
