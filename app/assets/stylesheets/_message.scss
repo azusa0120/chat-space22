@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: white;
+}
+
+input{
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.flash-box {
+  color: white;
+  font-size: 1rem;
+  font-weight: lighter;
+  text-align: center;
+  width: 100vw;
+}
+
+.wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+//左側
+.chat-side {
+  width: 300px;
+  color: white;
+  float: left;
+}
+
+//左上
+.side-header {
+  background-color: #253141;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
+    &__menu {
+      display: flex;
+      &__new-group {
+        margin-left: 0.3rem;
+      }
+      &__edit-user {
+        margin-left: 0.3rem;
+      }
+    }
+  }
+}
+
+i.fa.fa-edit {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+i.fa.fa-cog {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+//左下縦長
+.groups {
+  height: calc(100vh - 100px);
+  background-color: $side_blue_light;
+  padding: 20px 20px 0;
+  overflow: scroll;
+}
+
+.group {
+  margin-bottom: 40px;
+  &__name {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+  &__latest-message {
+    font-size: 11px;
+  }
+}

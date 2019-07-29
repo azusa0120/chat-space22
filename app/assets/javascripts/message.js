@@ -1,7 +1,8 @@
-$(document).on('turbolinks:load', function(){ 
+$(document).on('turbolinks:load', function() {
+
   function buildMessage(message){
-    var insertImage = message.image ? `<img src="${message.image}">` : ''
-    var html = `<div class="message"data-id="${message.id}">
+    var insertImage = message.image == undefined ? "" : `<img src="${message.image}" class="message__lower-info__image">`
+    var html = `<div class="message" data-id="${message.id}">
                   <div class="message__upper-info">
                     <p class="message__upper-info__talker">
                     ${message.user_name}
@@ -19,6 +20,7 @@ $(document).on('turbolinks:load', function(){
                 </div>`
     return html;
   }
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -30,24 +32,19 @@ $(document).on('turbolinks:load', function(){
       dataType: 'json',
       processData: false,
       contentType: false
-    })
- 
-
-
+  })
   .done(function(message){
     var html = buildMessage(message);
     $('.messages').append(html)
-    $('.messages').animate({scrollTop: $(".messages")[0].scrollHeight},500);
-    $('#new_message')[0].reset()
-    $('.submit-btn').prop('disabled',false)
+    $('.messages').animate({ scrollTop: $(".messages")[0].scrollHeight }, 500);
+    $('#new_message')[0].reset();
+    $('.submit-btn').prop('disabled', false);
   })
-
   .fail(function(){
-    alert('エラーが起こりました')
+    alert('メッセージを送信できませんでした。');
   })
-
   .always(function(message){
-      $('.form__submit').prop('disabled', false);
+    $('.form__submit').prop('disabled', false);
+    })
   })
-})
 })
