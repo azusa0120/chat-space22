@@ -47,4 +47,31 @@ $(document).on('turbolinks:load', function() {
     $('.form__submit').prop('disabled', false);
     })
   })
-})
+
+  var reloadMessages = function() {
+    if (location.href.match(/\/groups\/\d+\/messages/)){
+      last_message_id = $('.message').last().data('id');
+      $.ajax({
+        url: 'api/messages', 
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+      .done(function(messages) {
+        var insertHTML = '';
+        messages.forEach(function(message){
+        insertHTML += buildMessage(message)
+        $('.messages').append(insertHTML)
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 500);
+        })
+      })
+      .fail(function() {
+        alert('失敗です');
+      });
+    } else {
+      clearInterval(reloadMessages);
+    }
+  };
+  // reloadMessages();
+  setInterval(reloadMessages, 5000);
+});
